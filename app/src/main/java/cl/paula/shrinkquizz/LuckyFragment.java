@@ -1,9 +1,11 @@
 package cl.paula.shrinkquizz;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +56,16 @@ public class LuckyFragment extends Fragment {
             public void onClick(View view) {
                 boolean answer =mood.isChecked();
                 Log.d("ANSWER", String.valueOf(answer));
+                AlertDialog.Builder alertdialog =new AlertDialog.Builder(getActivity());
+                alertdialog.setTitle("caulquier cosa");
+                alertdialog.setMessage(new LuckyResult(answer).luckyResult());
+                alertdialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertdialog.show();
             }
         });
 

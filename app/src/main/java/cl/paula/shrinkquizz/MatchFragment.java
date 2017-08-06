@@ -1,9 +1,11 @@
 package cl.paula.shrinkquizz;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +87,16 @@ button.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view) {
         int user = userSb.getProgress();
         int lover = loverSb.getProgress();
+        AlertDialog.Builder alertdialog =new AlertDialog.Builder(getActivity());
+        alertdialog.setTitle("caulquier cosa");
+        alertdialog.setMessage(new MatchFinalResult(user, lover).matchResult());
+        alertdialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertdialog.show();
     }
 });
 
